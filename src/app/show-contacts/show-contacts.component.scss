@@ -1,0 +1,17 @@
+.table-responsive {
+  display: table;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto scroll  !important ;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mat-icon-button {
+  padding: 0;
+  min-width: 0;
+  width: 20px !important;
+  height: 20px  !important;
+  flex-shrink: 0;
+  line-height: 20px !important;
+  border-radius: 50%;
+}

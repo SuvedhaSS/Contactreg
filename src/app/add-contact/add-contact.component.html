@@ -1,0 +1,52 @@
+<div class="row">
+
+  <div class="card " style="width: 25%;">
+    <div class="card-header bg-info text-white">Add new Contact</div>
+    <div class="card-body ">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+        <div novalidate>
+
+          <div class="Simple example">
+            <mat-form-field appearance="fill">
+              <mat-label> First Name </mat-label>
+              <input matInput formControlName="firstName" [(ngModel)]='currentcontact.FirstName'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label> Last Name </mat-label>
+              <input matInput formControlName="lastName" [(ngModel)]='currentcontact.LastName'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label> Phone No. </mat-label>
+              <input matInput type="number" formControlName="phoneNo" [(ngModel)]='currentcontact.PhoneNumber'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label> Email Id </mat-label>
+              <input matInput type="email" formControlName="email" [(ngModel)]='currentcontact.EmailId'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label> Status </mat-label>
+              <mat-select formControlName="status" [(ngModel)]='currentcontact.Status'>
+                <mat-option *ngFor='let item of statusList'  [value]="item.value" > {{item.text}} </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <button mat-raised-button type="submit" (click)="contactForm.reset" color="primary"
+            [disabled]="contactForm.pristine && !contactForm.valid" class="mr-2">
+              {{currentcontact.Id>0?'Update':  'Save'}} </button>
+          <button mat-raised-button type="reset" color="warn"
+            [disabled]="contactForm.pristine && !contactForm.valid">Clear</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="card" style="width: 75%;">
+    <app-show-contacts (RemoveContact)='RemoveContact($event)' (EditContact)='EditContact($event)'></app-show-contacts>
+  </div>
+</div>
